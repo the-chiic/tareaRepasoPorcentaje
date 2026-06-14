@@ -1,0 +1,284 @@
+/* TABLET BREAKPOINT: max-width 1024px */
+@media screen and (max-width: 1024px) {
+    /* 
+      1. Ajustamos el ancho del body de un valor fijo de 1480px a 100% 
+         para adaptarlo al ancho del viewport y evitar desbordamientos laterales.
+    */
+    body {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        background: linear-gradient(to right, rgb(2, 50, 14) 300px, antiquewhite 300px);
+    }
+
+    /* 
+      2. Reducimos el ancho del menú lateral de 300px a 240px para ganar espacio 
+         útil horizontal en resoluciones de tablet comunes.
+    */
+    nav {
+        width: 240px;
+    }
+
+    /* 
+      3. Reducimos el padding horizontal del ul en el sidebar a 25px 
+         para que los botones del menú sigan cabiendo correctamente (ancho útil de 190px).
+    */
+    nav ul {
+        padding: 50px 25px;
+    }
+
+    /* 
+      4. Ajustamos el main para compensar la reducción del nav:
+         - margin-left: 240px para que encaje con el nav.
+         - width: calc(100% - 240px) en lugar de 1080px fijos.
+         - padding horizontal reducido de 50px a 25px para ganar más espacio útil.
+    */
+    main {
+        width: calc(100% - 290px); /* Restamos 240px (nav) + 50px (padding horizontal de main: 25px izq + 25px der) */
+        margin-left: 240px;
+        padding: 0px 25px 25px 25px;
+        height: auto; /* Dejamos que la altura se autoajuste al contenido que fluirá verticalmente */
+    }
+
+    /* 
+      5. Tarjetas de estadísticas adaptables:
+         - Ancho de container a 100%.
+         - flex-wrap: wrap y height: auto para permitir que se organicen en dos columnas si no caben en una fila.
+    */
+    main .container-stadistics {
+        width: 100%;
+        height: auto;
+        flex-wrap: wrap;
+        padding: 15px 0px;
+    }
+
+    /* 
+      6. Tarjetas individuales de estadísticas organizadas en 2 columnas:
+         - width de cada tarjeta a calc(50% - 10px) para acomodar dos por fila.
+         - margin-bottom de 15px para separarlas de la fila inferior.
+    */
+    main .container-stadistics .stadistic {
+        width: calc(50% - 60px); /* Restamos 50px del padding horizontal (25px + 25px) y 10px de margen de separación */
+        margin-bottom: 15px;
+    }
+
+    /* 
+      7. Fila inferior de actualizaciones adaptable:
+         - Ancho a 100% y altura a auto.
+         - flex-direction: column para apilar las tarjetas verticalmente y mejorar su lectura.
+    */
+    main .container-last-updates {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px 0px;
+    }
+
+    /* 
+      8. Cajas de pedidos y productos populares de ancho completo en tablet:
+         - Cambiamos el ancho a 100% (menos paddings).
+         - Altura auto para acomodar todo el contenido de forma fluida.
+    */
+    main .container-last-updates .card-info-pedidos {
+        width: calc(100% - 100px); /* 100% del contenedor main útil menos 100px de padding horizontal */
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    main .container-last-updates .card-productos-populares {
+        width: calc(100% - 100px); /* 100% del contenedor main útil menos 100px de padding horizontal */
+        height: auto;
+    }
+
+    /* 
+      9. Ajustamos el footer para que sea fluido y no cause desbordamiento horizontal:
+         - width a calc(100% - 100px) para compensar el padding de 50px a los lados.
+    */
+    footer {
+        width: calc(100% - 100px);
+        height: auto;
+        padding: 25px 50px;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    /* 
+      10. Columnas del footer adaptadas a un diseño fluido de 3 columnas o apilamiento:
+          - flex-basis a calc(33.33% - 20px) para mantenerlas en una sola línea horizontal.
+    */
+    footer .container-footer-title-logo,
+    footer .container-footer-info,
+    footer .container-footer-social-media {
+        flex-basis: calc(33.33% - 20px);
+    }
+
+    /* 
+      11. Redes sociales en tablet:
+          - Ajustamos los botones a un ancho relativo del 30% del bloque de la columna 
+            para evitar que desborden por el espacio reducido.
+    */
+    footer .container-footer-social-media .social-links .social-logo {
+        width: calc(33.33% - 10px);
+    }
+}
+
+/* MOBILE BREAKPOINT: max-width 768px */
+@media screen and (max-width: 768px) {
+    /* 
+      1. Adaptamos el menú lateral para que se apile de forma superior vertical:
+         - Desactivamos el flotado (float: none).
+         - Ancho a 100% y altura auto.
+    */
+    nav {
+        width: 100%;
+        height: auto;
+        float: none;
+    }
+
+    /* 
+      2. El menú de enlaces se vuelve horizontal y fluido para dispositivos móviles:
+         - flex-direction: row y flex-wrap: wrap para alinear los botones de forma horizontal y centrada.
+         - padding reducido a 20px.
+    */
+    nav ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+        gap: 10px;
+    }
+
+    /* 
+      3. Los botones individuales se autoajustan a su contenido para fluir de forma ordenada:
+         - Ancho auto y márgenes pequeños.
+    */
+    nav ul .container-list {
+        text-align: center;
+        margin: 0px;
+        
+        a {
+            padding: 8px 16px;
+        }
+    }
+
+    /* 
+      4. El main se posiciona debajo del nav superior:
+         - margin-left: 0px.
+         - width a calc(100% - 40px) y padding horizontal de 20px para pantallas pequeñas.
+         - height auto.
+    */
+    main {
+        width: calc(100% - 40px);
+        margin-left: 0px;
+        padding: 20px;
+        height: auto;
+    }
+
+    /* 
+      5. La cabecera se reestructura de forma centrada verticalmente:
+         - Altura auto.
+         - flex-direction: column para apilar el título y "Admin".
+    */
+    main .container-header {
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding-bottom: 15px;
+        
+        h1 {
+            font-size: 1.4rem;
+        }
+    }
+
+    /* 
+      6. Tarjetas de estadísticas apiladas en una sola columna:
+         - flex-direction: column para ir de arriba a abajo.
+    */
+    main .container-stadistics {
+        height: auto;
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 0px;
+    }
+
+    /* 
+      7. Cada tarjeta estadística a ancho completo en móvil:
+         - width: calc(100% - 50px) para ocupar el ancho del main útil (restando 50px de su padding).
+     */
+    main .container-stadistics .stadistic {
+        width: calc(100% - 50px);
+        margin-bottom: 0px;
+    }
+
+    /* 
+      8. Cajas inferiores apiladas verticalmente en móvil:
+         - flex-direction: column y padding reducido.
+    */
+    main .container-last-updates {
+        flex-direction: column;
+        padding: 20px 0px;
+        gap: 20px;
+        
+        .card-info-pedidos {
+            width: calc(100% - 40px); /* 100% del contenedor menos 40px de padding interno */
+            padding: 20px;
+            height: auto;
+            text-align: left;
+        }
+
+        .card-productos-populares {
+            width: calc(100% - 40px); /* 100% del contenedor menos 40px de padding interno */
+            padding: 20px;
+            height: auto;
+            
+            .producto-item {
+                margin-bottom: 15px;
+                
+                .producto-texto {
+                    flex: 1; /* Hace que el texto fluya ocupando el resto del espacio del contenedor */
+                }
+            }
+        }
+    }
+
+    /* 
+      9. Footer apilado verticalmente y centrado:
+         - flex-direction: column y alineación centrada.
+         - width: calc(100% - 40px) y padding horizontal de 20px.
+         - height auto.
+    */
+    footer {
+        width: calc(100% - 40px);
+        height: auto;
+        padding: 30px 20px;
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    /* 
+      10. Columnas del footer al 100% de ancho útil:
+          - flex-basis: 100%.
+    */
+    footer .container-footer-title-logo,
+    footer .container-footer-info,
+    footer .container-footer-social-media {
+        flex-basis: 100%;
+        padding-right: 0px;
+    }
+
+    /* 
+      11. Redes sociales centradas y con espacio adaptado en móvil:
+          - Separación y centrado de los iconos.
+    */
+    footer .container-footer-social-media .social-links {
+        justify-content: center;
+        gap: 15px;
+        
+        .social-logo {
+            width: 80px; /* Reducimos el ancho útil a 80px para compactarlos de forma centrada */
+        }
+    }
+}
